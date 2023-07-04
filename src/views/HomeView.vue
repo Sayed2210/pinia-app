@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Pinia App</h1>
+    <h2>Number {{ num }}</h2>
+    <h2>Getter {{ storegetter }}</h2>
+    <button @click="inc">++</button>
+    <button @click="dec">--</button>
   </div>
 </template>
-
+<!-- option api -->
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import { counter } from "@/store/counter";
+import { mapState, mapActions } from "pinia";
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  computed: {
+    ...mapState(counter, ["num"]),
+    storegetter() {
+      return counter().numPlusone;
+    },
+  },
+  methods: {
+    ...mapActions(counter, ["inc", "dec"]),
   },
 };
 </script>
