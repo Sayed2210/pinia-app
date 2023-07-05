@@ -5,7 +5,7 @@ export const counter = defineStore("counter", {
     num: 0,
   }),
   getters: {
-    numPlusone() {
+    numPlusOne() {
       return this.num + 1;
     },
   },
